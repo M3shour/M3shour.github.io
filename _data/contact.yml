@@ -12,7 +12,7 @@
   
 - type: linkedin
   icon: 'fab fa-linkedin'   # icons powered by <https://fontawesome.com/>
-  url:  ''                  # Fill with your Linkedin homepage
+  url:  'https://www.linkedin.com/in/ahmed-nasr-dev0'                  # Fill with your Linkedin homepage
 
 - type: rss
   icon: "fas fa-rss"

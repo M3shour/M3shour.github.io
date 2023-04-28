@@ -13,7 +13,7 @@ baseurl: ""
 lang: en
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
-timezone: Asia/Shanghai
+timezone: Africa/Khartoum
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
@@ -37,7 +37,7 @@ social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
   name: Ahmed Nasr
-  email: hmednasrdev0@gmail.com # change to your email address
+  email: ahmednasrdev0@gmail.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
     - https://twitter.com/m3shour0 # change to your twitter homepage
@@ -79,7 +79,7 @@ theme_mode: # [light|dark]
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: "assets/lib/bocchi.jpeg"
+avatar: "assets/img/bocchi.jpeg"
 
 # boolean type, the global switch for TOC in posts.
 toc: true
