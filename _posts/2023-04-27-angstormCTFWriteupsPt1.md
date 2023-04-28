@@ -3,10 +3,9 @@ title: AngstormCTF 2023 Writeups for web exploitation Part 1
 date: 2023-04-28 04:40:00 +/-0200
 categories: [CTF writeup, Web exploitaion]
 tags: [easy, angstormctf, inspect,epoch time,code audit,bruteforce]
-img_path: /assets/img/
 image:
-  path: AngstormPage.png
-  alt: AngstormCTF
+  path: /assets/img/AngstormPage.png
+  alt: image alternative text
 ---
 
 
@@ -30,7 +29,7 @@ Hello everyone!, here is my writeup for angstormCTF 2023 which ended 2 days ago,
 
 So looking at the website we can see that there is this long box spinning like crazy with the flag in it
 
-![img](catchmeifucan1.png){: .shadow  }
+![img](/assets/img/catchmeifucan1.png){: .shadow  }
 
 It would be annoying to try and catch it manually to copy it, lets's view the page source!
 
@@ -97,15 +96,15 @@ And down there you get the flag!
 
 Looking at the homepage of the challenge we see a scoreboard for some kind of speedrun and there is 0 second record that we should beat somehow
 
-![img](CelesteSpeedrunningAssociation1.png){: .shadow  }
+![img](/assets/img/CelesteSpeedrunningAssociation1.png){: .shadow  }
 
 Let's navigate to the `/play`{: .filepath} route!
 
-![img](CelesteSpeedrunningAssociation2.png){: .shadow  }
+![img](/assets/img/CelesteSpeedrunningAssociation2.png){: .shadow  }
 
 So the challenge is to press this button very fast I think, let's try pressing it
 
-![img](CelesteSpeedrunningAssociation3.png){: .shadow  }
+![img](/assets/img/CelesteSpeedrunningAssociation3.png){: .shadow  }
 
 Sadge, We couldn't beat the old lady:(
 let's look at the source code for the button
@@ -125,13 +124,13 @@ epoch time is the time in seconds that elapsed since the dawn of Unix time at 00
 So since we can modify this value using burp suite, let's navigate to `/play`{: .filepath} and press the button with burp suite interception turned on, and we would capture this request
 
 
-![img](CelesteSpeedrunningAssociation5.png){: .shadow  }
+![img](/assets/img/CelesteSpeedrunningAssociation5.png){: .shadow  }
 _note that the start value will be different for you depending on when you view the challenge_
 The way the record is measured is probably that it compares the value of the start parameter and its current epoch time, so if we send a value in the future by sending a larger number than the one in the start parameter, it would result in a negative record, and we would be the first in the leaderboard!
 
 And indeed by sending a larger value, we got the flag!
 
-![img](CelesteSpeedrunningAssociation6.png){: .shadow  }
+![img](/assets/img/CelesteSpeedrunningAssociation6.png){: .shadow  }
 
 #### Learned: `Epoch time`, `Burp suite intercept`
 > Due to epoch time being stored in a signed 32-bit variable, when this variable reaches the maximum value it can hold (2^31 - 1 = 2147483647), which will happen at 03:14:07 UTC on 19 January 2038, the integer will overflow! and that will cause the date to go all the way back to 
@@ -155,7 +154,7 @@ And indeed by sending a larger value, we got the flag!
 ### Solution
 
 going into the website we see this basic login form 
-![shortcircuit login page](shortcircuit1.png)
+![shortcircuit login page](/assets/img/shortcircuit1.png)
 
 let's view the source code
 ```html
@@ -226,7 +225,7 @@ Array(4) [ "7e08250c4aaa9ed206fd7c9e398e2}", "actf{cl1ent_s1de_sucks_544e67e", "
 ```
 Now looking at the `swap()` function, It basically swaps the first element with the fourth one, then swaps the second and the third, then the second and the fourth, and lastly the third and the fourth, now this causes headage so look at this diagram
 
-![Diagram for how swap fucntion works](shortcircuit2.png){: .shadow  }
+![Diagram for how swap fucntion works](/assets/img/shortcircuit2.png){: .shadow  }
 _debugging of `swap()` function_
 
 So if you understand it correctly, you will notice that double swapping the flag text would make the `actf{` part at the beginning and `}` one at the ending
@@ -261,11 +260,11 @@ And inputting it into the login form we can verify that is indeed the flag!
 
 Looking at the homepage we see there are huuuuuge number of links to other pages
 
-![directory homepage](directory1.png){: .shadow  }
+![directory homepage](/assets/img/directory1.png){: .shadow  }
 
 let's try and open one of them
 
-![directory page 0](directory2.png){: .shadow  }
+![directory page 0](/assets/img/directory2.png){: .shadow  }
 
 So the flag is in one of those links LOL, and we have to scan ALL OF THEM ONE BY ONE
 
@@ -275,20 +274,20 @@ so there are 2 ways to solve this
 
 The one I did is using burp suite intruder, let’s try that, first let’s capture a `GET` request to one of those pages, Send it to the intruder and select the number in the URL and add it
 
-![Capturing request brupsuite](directory3.png){: .shadow  }
+![Capturing request brupsuite](/assets/img/directory3.png){: .shadow  }
 
 Select sniper attack, go to the payload, select numbers payloads type, change the starting and ending point (0-4999), and start the attack
 
-![brupsuite intruder](directory4.png){: .shadow  }
+![brupsuite intruder](/assets/img/directory4.png){: .shadow  }
 
 As you can see all the requests are resulting in code 200, then how would we know the right one? we can know that by looking at the response length since all the pages have the exact message on them except that page that has the flag!
 
-![brupsuite intruder attack setting](directory5.png){: .shadow  }
+![brupsuite intruder attack setting](/assets/img/directory5.png){: .shadow  }
 
 
 After some good time, I found the flag at page `/3054.html`{: .filepath}, going there and we get the flag!
 
-![Getting the flag](directory6.png){: .shadow  }
+![Getting the flag](/assets/img/directory6.png){: .shadow  }
 
 
 > When I was looking for how others solve this challenge I found some interesting other ways, one was to download all those pages and do a grep search on them (shout out to [SloppyJoePirates](https://www.youtube.com/watch?v=fe5O1wUSkIE)), another way I found by [dimasma0305](https://github.com/TCP1P/TCP1P_CTF_writeup/tree/main/2023/angstromctf-2023#directory---web---multithread-request-in-website-with-python) is to use python request with multithreader to speed up the process.
