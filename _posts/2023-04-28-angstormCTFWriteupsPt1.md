@@ -5,7 +5,7 @@ categories: [CTF writeup, Web exploitaion]
 tags: [easy, angstormctf, inspect,epoch time,code audit,bruteforce]
 image:
   path: /assets/img/AngstormPage.png
-  alt: image alternative text
+  alt: AngstormCTF 2023
 ---
 
 
@@ -233,10 +233,10 @@ So if you understand it correctly, you will notice that double swapping the flag
 >> flagText = "7e08250c4aaa9ed206fd7c9e398e2}actf{cl1ent_s1de_sucks_544e67ef12024523398ee02fe7517fffa92516317199e454f4d2bdb04d9e419ccc7"
 "7e08250c4aaa9ed206fd7c9e398e2}actf{cl1ent_s1de_sucks_544e67ef12024523398ee02fe7517fffa92516317199e454f4d2bdb04d9e419ccc7"
 
->>swap(swap(chunk(flagText,30)))
+>> swap(swap(chunk(flagText,30)))
 Array(4) [ "actf{cl1ent_s1de_sucks_544e67e", "6317199e454f4d2bdb04d9e419ccc7", "f12024523398ee02fe7517fffa9251", "7e08250c4aaa9ed206fd7c9e398e2}" ]
 
->>swap(swap(chunk(flagText,30))).join("")
+>> swap(swap(chunk(flagText,30))).join("")
 "actf{cl1ent_s1de_sucks_544e67e6317199e454f4d2bdb04d9e419ccc7f12024523398ee02fe7517fffa92517e08250c4aaa9ed206fd7c9e398e2}" 
 ```
 And inputting it into the login form we can verify that is indeed the flag!
