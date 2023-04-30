@@ -1,15 +1,15 @@
 ---
-title: AngstormCTF 2023 Writeups for web exploitation Part 1
+title: AngstromCTF 2023 Writeups for web exploitation Part 1
 date: 2023-04-28 04:40:00 +/-0200
 categories: [CTF writeup, Web exploitaion]
-tags: [easy, angstormctf, inspect,epoch time,code audit,bruteforce]
+tags: [easy, angstromctf, inspect, epoch time, code audit, bruteforce]
 image:
-  path: /assets/img/AngstormPage.png
-  alt: AngstormCTF 2023
+  path: /assets/img/angstromPage.png
+  alt: angstromCTF 2023
 ---
 
 
-Hello everyone!, here is my writeup for angstormCTF 2023 which ended 2 days ago, sadly I couldn't participate in it and I solved those challenges after the competition is over :(   **Let's dive into it!**
+Hello everyone!, here is my writeup for angstromCTF 2023 which ended 2 days ago, sadly I couldn't participate in it and I solved those challenges after the competition is over :(   **Let's dive into it!**
 
 ## 1. Catch me if you can
 ---
@@ -26,7 +26,7 @@ Hello everyone!, here is my writeup for angstormCTF 2023 which ended 2 days ago,
 
 
 ### Solution
-
+---
 So looking at the website we can see that there is this long box spinning like crazy with the flag in it
 
 ![img](/assets/img/catchmeifucan1.png){: .shadow  }
@@ -93,7 +93,7 @@ And down there you get the flag!
 
 
 ### Solution
-
+---
 Looking at the homepage of the challenge we see a scoreboard for some kind of speedrun and there is 0 second record that we should beat somehow
 
 ![img](/assets/img/CelesteSpeedrunningAssociation1.png){: .shadow  }
@@ -152,7 +152,7 @@ And indeed by sending a larger value, we got the flag!
 
 
 ### Solution
-
+---
 going into the website we see this basic login form 
 ![shortcircuit login page](/assets/img/shortcircuit1.png)
 
@@ -257,7 +257,6 @@ And inputting it into the login form we can verify that is indeed the flag!
 
 ### Solution
 ---
-
 Looking at the homepage we see there are huuuuuge number of links to other pages
 
 ![directory homepage](/assets/img/directory1.png){: .shadow  }
@@ -294,3 +293,5 @@ After some good time, I found the flag at page `/3054.html`{: .filepath}, going 
 
 #### Learned: `Requests brute-forcing`, `Burp suite intruder`
 {: .prompt-info }
+---
+**To be continued in part 2!**
