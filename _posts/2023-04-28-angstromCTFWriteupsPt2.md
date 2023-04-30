@@ -4,7 +4,7 @@ date: 2023-04-28 21:20:00 +/-0200
 categories: [CTF writeup, Web exploitaion]
 tags: [medium, angstromctf, http headers, xss, ssti, dangling markup attack]
 image:
-  path: /assets/img/angstromPage.png
+  path: /assets/img/AngstromPage.png
   alt:  angstromCTF 2023
 ---
 

@@ -4,8 +4,8 @@ date: 2023-04-29 1:20:00 +/-0200
 categories: [CTF writeup, Web exploitaion]
 tags: [Hard, angstromctf, insecure randomness, php session upload, pearcmd.php exploit, privilege escalation, suid path exploit]
 image:
-  path: /assets/img/angstromPage.png
-  alt:  angstromCTF 2023
+  path: /assets/img/AngstromPage.png
+  alt:  AngstromCTF 2023
 ---
 
 
@@ -24,7 +24,7 @@ Hello everyone!, here is the 3rd and last part of my writeups for the hardest ch
 
 
 
-### Solution ![filer message](/assets/img/CelesteTunnelingAssociation1.png){: .shadow  }
+### Solution 
 ---
 Going into the website, we are greeted with the source code of the index.php!
 
@@ -268,6 +268,32 @@ Now we have a shell as the ctf user, but we need to escalate our privileges to t
 And indeed if we `ls / -lah` we can find some interesting stuff in the root directory
 
 ```bash
+drwxr-xr-x 1 root root 4.0K Apr 26 07:46 .
+drwxr-xr-x 1 root root 4.0K Apr 26 07:46 ..
+d-wx-wx--x 1 root root 20K Apr 30 00:59 abyss
+drwxr-xr-x 1 root root 4.0K Apr 21 18:50 bin
+drwxr-xr-x 2 root root 4.0K Dec 9 19:15 boot
+drwxr-xr-x 5 root root 360 Apr 26 07:46 dev
+drwxr-xr-x 1 root root 4.0K Apr 26 07:46 etc
+-r--r----- 1 admin admin 38 Apr 21 06:05 flag.txt
+drwxr-xr-x 2 root root 4.0K Dec 9 19:15 home
+drwxr-xr-x 1 root root 4.0K Apr 12 03:31 lib
+drwxr-xr-x 2 root root 4.0K Apr 11 00:00 lib64 
+---x--s--x 1 admin admin 894K Apr 21 08:15 list_uploads
+---x--s--x 1 root root 17K Apr 21 18:11 make_abyss_entry 
+drwxr-xr-x 2 root root 4.0K Apr 11 00:00 media
+drwxr-xr-x 2 root root 4.0K Apr 11 00:00 mnt
+drwxr-xr-x 2 root root 4.0K Apr 11 00:00 opt
+dr-xr-xr-x 381 root root 0 Apr 26 07:46 proc
+drwx------ 1 root root 4.0K Apr 14 18:16 root
+drwxr-xr-x 1 root root 4.0K Apr 12 03:34 run 
+drwxr-xr-x 1 root root 4.0K Apr 12 03:34 sbin
+drwxr-xr-x 2 root root 4.0K Apr 11 00:00 srv
+dr-xr-xr-x 13 root root 0 Apr 22 20:03 sys 
+drwxrwxrwt 1 root root 4.0K Apr 30 00:13 tmp
+drwxr-xr-x 1 root root 4.0K Apr 11 00:00 usr 
+drwxr-xr-x 1 root root 4.0K Apr 12 03:31 var
+drwxr-xr-x 1 root root 4.0K Apr 12 03:31 var
 
 ```
 Sure there are some interesting files here!

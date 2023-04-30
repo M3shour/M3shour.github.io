@@ -4,7 +4,7 @@ date: 2023-04-28 04:40:00 +/-0200
 categories: [CTF writeup, Web exploitaion]
 tags: [easy, angstromctf, inspect, epoch time, code audit, bruteforce]
 image:
-  path: /assets/img/angstromPage.png
+  path: /assets/img/AngstromPage.png
   alt: angstromCTF 2023
 ---
 
